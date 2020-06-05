@@ -27,7 +27,7 @@
     "dependencies": {
         "@koa/cors": "^2.2.3",
         "get-port": "^5.1.1",
-        "fvfvi-node-utils": "^0.0.1",
+        "fvi-node-utils": "^0.0.1",
         "ip": "^1.1.5",
         "koa": "^2.11.0",
         "koa-404-handler": "^0.0.2",
@@ -51,7 +51,7 @@
         "grunt-nodemon": "^0.4.2",
         "grunt-notify": "^0.4.5",
         "grunt-shell": "^3.0.1",
-        "fvi-prettier-config": "^1.0.2",
+        "fvi-prettier-config": "^0.0.1",
         "load-grunt-tasks": "^5.0.1",
         "mocha": "^7.1.2"
     }
