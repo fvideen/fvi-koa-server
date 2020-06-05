@@ -3,7 +3,7 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 
-const { toConfig } = require('i-node-utils/app/objects')
+const { toConfig } = require('fvi-node-utils/app/objects')
 
 const app = require('../app')
 

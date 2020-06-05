@@ -1,6 +1,6 @@
 'use strict'
 
-const { config } = require('i-node-utils')
+const { config } = require('fvi-node-utils')
 
 module.exports = () =>
     config({

@@ -1,6 +1,6 @@
 'use strict'
 
-const utils = require('i-node-utils')
+const utils = require('fvi-node-utils')
 
 const getPort = require('get-port')
 

@@ -16,7 +16,7 @@ const logger = require('koa-logger')
 const bodyParser = require('koa-body')
 
 const ip = require('ip')
-const utils = require('i-node-utils')
+const utils = require('fvi-node-utils')
 
 const configSchema = require('./schema')
 

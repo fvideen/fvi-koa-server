@@ -1,6 +1,6 @@
 'use strict'
 
-const { joi } = require('i-node-utils/app/objects')
+const { joi } = require('fvi-node-utils/app/objects')
 
 module.exports = joi.object({
     name: joi.string(),

@@ -30,7 +30,7 @@
     "dependencies": {
         "@koa/cors": "^2.2.3",
         "get-port": "^5.1.1",
-        "i-node-utils": "^0.2.0",
+        "fvfvi-node-utils": "^0.0.1",
         "ip": "^1.1.5",
         "koa": "^2.11.0",
         "koa-404-handler": "^0.0.2",
