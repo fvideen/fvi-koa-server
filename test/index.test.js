@@ -3,9 +3,9 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 
-const { toConfig } = require('fvi-node-utils/app/objects')
+const { objects } = require('fvi-node-utils')
 
-const app = require('../app')
+const app = require('../src')
 
 chai.use(chaiHttp)
 chai.should()
@@ -17,7 +17,7 @@ describe(':: Koa Server', () => {
         let server
 
         before(() =>
-            app(toConfig({ server: { name: SERVER_NAME, version: '1.0.0' } }))
+            app(objects.toConfig({ server: { name: SERVER_NAME, version: '1.0.0' } }))
                 .then(s => {
                     server = s
                 })
@@ -28,7 +28,7 @@ describe(':: Koa Server', () => {
         after(() => server.instance.close())
 
         it('Koa Server with Invalid Config:', done => {
-            const app = require('../app/index')
+            const app = require('../src/index')
             app({})
                 .then(() => {
                     done('Not throws Invalid Config Error')
@@ -44,7 +44,7 @@ describe(':: Koa Server', () => {
         })
 
         it('Koa Server with Config into ./config directory:', done => {
-            const app = require('../app/index')
+            const app = require('../src/index')
             app()
                 .then(server => {
                     chai.assert.exists(server, 'server is null!')
