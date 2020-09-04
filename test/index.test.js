@@ -3,9 +3,9 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 
-const { toConfig } = require('fvi-node-utils/app/objects')
+const { objects } = require('fvi-node-utils')
 
-const app = require('../app')
+const app = require('../src')
 
 chai.use(chaiHttp)
 chai.should()
@@ -17,7 +17,7 @@ describe(':: Koa Server', () => {
         let server
 
         before(() =>
-            app(toConfig({ server: { name: SERVER_NAME, version: '1.0.0' } }))
+            app(objects.toConfig({ server: { name: SERVER_NAME, version: '1.0.0' } }))
                 .then(s => {
                     server = s
                 })
