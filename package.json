@@ -28,7 +28,7 @@
     "dependencies": {
         "@koa/cors": "^2.2.3",
         "get-port": "^5.1.1",
-        "fvi-node-utils": "^0.0.7",
+        "fvi-node-utils": "^0.0.8",
         "ip": "^1.1.5",
         "koa": "^2.11.0",
         "koa-404-handler": "^0.0.2",
