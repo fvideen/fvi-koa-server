@@ -50,7 +50,6 @@ const server = cfg => {
     app.use(cors())
     app.use(helmet())
     app.use(logger())
-    app.use(multer())
     app.use(
         bodyParser({
             multipart: true,
