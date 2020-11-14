@@ -1,6 +1,6 @@
 {
     "name": "fvi-koa-server",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "FVI Super Koa.js Server",
     "main": "src/index.js",
     "prettier": "fvi-prettier-config",
@@ -27,8 +27,8 @@
     "license": "MIT",
     "dependencies": {
         "@koa/cors": "^2.2.3",
-        "get-port": "^5.1.1",
         "fvi-node-utils": "^0.0.8",
+        "get-port": "^5.1.1",
         "ip": "^1.1.5",
         "koa": "^2.11.0",
         "koa-404-handler": "^0.0.2",
@@ -36,8 +36,8 @@
         "koa-body": "^4.1.1",
         "koa-bodyparser": "^4.2.1",
         "koa-helmet": "^5.2.0",
-        "koa-router": "^8.0.8",
-        "koa-logger": "^3.2.1"
+        "koa-logger": "^3.2.1",
+        "koa-router": "^8.0.8"
     },
     "devDependencies": {
         "chai": "^4.2.0",
