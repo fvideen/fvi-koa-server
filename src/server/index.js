@@ -50,7 +50,13 @@ const server = cfg => {
     app.use(cors())
     app.use(helmet())
     app.use(logger())
-    app.use(bodyParser())
+    app.use(multer())
+    app.use(
+        bodyParser({
+            multipart: true,
+            onError: (err, ctx) => console.error('Body Parser Error:', err, 'ctx:', ctx),
+        })
+    )
 
     const env = _env(cfg)
     const info = _info(cfg)
