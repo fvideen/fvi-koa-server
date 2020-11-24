@@ -27,7 +27,7 @@
     "license": "MIT",
     "dependencies": {
         "@koa/cors": "^2.2.3",
-        "fvi-node-utils": "^0.0.8",
+        "fvi-node-utils": "^0.0.10",
         "get-port": "^5.1.1",
         "ip": "^1.1.5",
         "koa": "^2.11.0",
