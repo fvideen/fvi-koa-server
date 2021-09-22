@@ -3,7 +3,7 @@
 const supportApi = require('./api-support')
 
 module.exports = server => {
-    return {
-        supportApi: supportApi(server),
-    }
+  return {
+    supportApi: supportApi(server),
+  }
 }
