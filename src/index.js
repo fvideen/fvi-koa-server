@@ -9,40 +9,40 @@ const server = require('./server')
 const api = require('./api')
 
 const getAvailablePort = async port => {
-    if (utils.env.IS_TEST) {
-        return await getPort({ port })
-    }
+  if (utils.env.IS_TEST) {
+    return await getPort({ port })
+  }
 
-    return port
+  return port
 }
 
 const getConfig = async config => {
-    const cfg = config.get('server')
+  const cfg = config.get('server')
 
-    cfg.port = await getAvailablePort(cfg.port)
+  cfg.port = await getAvailablePort(cfg.port)
 
-    return cfg
+  return cfg
 }
 
 module.exports = async (cfg = null) => {
-    const hasConfigParam = !!cfg
+  const hasConfigParam = !!cfg
 
-    if (hasConfigParam) {
-        utils.objects.throwsIfNotConfig(cfg)
-    } else {
-        cfg = config()
-    }
+  if (hasConfigParam) {
+    utils.objects.throwsIfNotConfig(cfg)
+  } else {
+    cfg = config()
+  }
 
-    utils.debug.here(`koa-server:config ${utils.objects.inspect(cfg.getProperties())}`)
+  utils.debug.here(`koa-server:config ${utils.objects.inspect(cfg.getProperties())}`)
 
-    const serverConfig = await getConfig(cfg)
+  const serverConfig = await getConfig(cfg)
 
-    const app = server(serverConfig)
+  const app = server(serverConfig)
 
-    utils.debug.here(`Koa Server port=${serverConfig.port}`)
+  utils.debug.here(`Koa Server port=${serverConfig.port}`)
 
-    // Here Config routers and return its, but here is not necessary return content
-    api(app)
+  // Here Config routers and return its, but here is not necessary return content
+  api(app)
 
-    return app
+  return app
 }

@@ -15,66 +15,69 @@ const helmet = require('koa-helmet')
 const logger = require('koa-logger')
 const bodyParser = require('koa-body')
 
+const KoaRouter = require('koa-router')
+
 const ip = require('ip')
 const utils = require('fvi-node-utils')
 
 const configSchema = require('./schema')
 
 const _env = cfg => {
-    const user = process.env.USER
-    const port = cfg.port
-    const environment = process.env.NODE_ENV || utils.env.DEVELOPMENT
+  const user = process.env.USER
+  const port = cfg.port
+  const environment = process.env.NODE_ENV || utils.env.DEVELOPMENT
 
-    return {
-        ip: ip.address(),
-        user,
-        port,
-        environment,
-    }
+  return {
+    ip: ip.address(),
+    user,
+    port,
+    environment,
+  }
 }
 
 const _info = cfg => {
-    return {
-        name: cfg.name,
-        version: cfg.version,
-    }
+  return {
+    name: cfg.name,
+    version: cfg.version,
+  }
 }
 
 const server = cfg => {
-    utils.objects.joi.assert(cfg, configSchema)
+  utils.objects.joi.assert(cfg, configSchema)
 
-    const app = new Koa()
+  const app = new Koa()
 
-    app.context.onerror = errorHandler
-    app.use(error404)
-    app.use(cors())
-    app.use(helmet())
-    app.use(logger())
-    app.use(
-        bodyParser({
-            multipart: true,
-            onError: (err, ctx) => console.error('Body Parser Error:', err, 'ctx:', ctx),
-        })
-    )
+  app.context.onerror = errorHandler
+  app.use(error404)
+  app.use(cors())
+  app.use(helmet())
+  app.use(logger())
+  app.use(
+    bodyParser({
+      multipart: true,
+      onError: (err, ctx) => console.error('Body Parser Error:', err, 'ctx:', ctx),
+    })
+  )
 
-    const env = _env(cfg)
-    const info = _info(cfg)
+  const env = _env(cfg)
+  const info = _info(cfg)
 
-    app.env = env
-    app.info = info
+  app.env = env
+  app.info = info
 
-    const server = app.listen(env.port)
+  const server = app.listen(env.port)
 
-    utils.debug.here(`[Koa Server]: process.env=${utils.objects.inspect({ process: process.env })}`)
-    utils.debug.here(`[Koa Server]: server.env=${utils.objects.inspect({ info, env })}`)
-    utils.debug.here(
-        `[Koa Server][${info.name}][${info.version}]: Listen Address: ${ip.address()}:${
-            env.port
-        } at ${new Date()}`
-    )
+  utils.debug.here(`[Koa Server]: process.env=${utils.objects.inspect({ process: process.env })}`)
+  utils.debug.here(`[Koa Server]: server.env=${utils.objects.inspect({ info, env })}`)
+  utils.debug.here(
+    `[Koa Server][${info.name}][${info.version}]: Listen Address: ${ip.address()}:${
+      env.port
+    } at ${new Date()}`
+  )
 
-    app.instance = server
-    return app
+  app.instance = server
+  app.KoaRouter = KoaRouter
+  return app
 }
 
 module.exports = server
